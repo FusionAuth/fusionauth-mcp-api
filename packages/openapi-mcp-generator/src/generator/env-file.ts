@@ -24,7 +24,6 @@ LOG_LEVEL=info
 # Base URL for the API (override if different from OpenAPI spec)
 # CAUTION: Only use this for Development or Testing environments
 #API_BASE_URL=http://localhost:9011
-#API_KEY_APIKEYAUTH=your_api_key_here
 
 `;
 
