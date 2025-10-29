@@ -1,16 +1,32 @@
 {
-  "name": "mcp-api",
-  "version": "0.1.0",
-  "description": "Preview release of FusionAuth API MCP server",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "fusionauth",
-    "mcp",
-    "api"
+  "name": "fusionauth-api",
+  "version": "1.60.2",
+  "description": "MCP Server generated from OpenAPI spec for fusionauth-api",
+  "private": true,
+  "type": "module",
+  "main": "build/index.js",
+  "files": [
+    "build",
+    "src"
   ],
-  "author": "auto generated",
-  "license": "Apache-2.0"
+  "scripts": {
+    "start": "node build/index.js",
+    "build": "tsc && chmod 755 build/index.js",
+    "typecheck": "tsc --noEmit",
+    "prestart": "npm run build"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.10.0",
+    "axios": "^1.9.0",
+    "dotenv": "^16.4.5",
+    "zod": "^3.24.3",
+    "json-schema-to-zod": "^2.6.1"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.2",
+    "typescript": "^5.8.3"
+  }
 }
