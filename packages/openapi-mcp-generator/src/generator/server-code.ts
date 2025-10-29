@@ -131,7 +131,7 @@ interface McpToolDefinition {
 export const SERVER_NAME = "${serverName}";
 export const SERVER_VERSION = "${serverVersion}";
 export const OPENAPI_BASE_URL = "${determinedBaseUrl || ''}";
-export const API_BASE_URL = process.env[`API_BASE_URL`] || OPENAPI_BASE_URL;
+export const API_BASE_URL = process.env[\`API_BASE_URL\`] || OPENAPI_BASE_URL;
 
 /**
  * MCP Server instance
