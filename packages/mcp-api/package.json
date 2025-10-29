@@ -1,0 +1,16 @@
+{
+  "name": "mcp-api",
+  "version": "0.1.0",
+  "description": "Preview release of FusionAuth API MCP server",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "fusionauth",
+    "mcp",
+    "api"
+  ],
+  "author": "auto generated",
+  "license": "Apache-2.0"
+}
