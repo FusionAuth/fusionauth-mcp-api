@@ -31,7 +31,7 @@ cp .env.example .env
 
 Configure your MCP client to use the FusionAuth API MCP server.
 
-For example, edit `~/Library/Application Support/Claude/claude_desktop_config.json` to include
+For example, to add to Claude Desktop, edit `~/Library/Application Support/Claude/claude_desktop_config.json` to include the `fusionauth-api-server` below. If you don't have any previous MCP servers installed, it would look like this:
 
 ```json
 {
@@ -54,11 +54,18 @@ For example, edit `~/Library/Application Support/Claude/claude_desktop_config.js
 }
 ```
 
+You can omit the `env` section above if you have configured an `.env` file.
+
 ## Example Prompts
 
-"how many fusionauth applications do I have?"
+* "which tools do you have access to?" should show you all the FusionAuth API tools
+* "how many fusionauth applications do I have?"
+* "how many users do I have in my fusionauth instance?"
+* "add a user with an email address of test@example.com and a password of 'password'"
 
 ## Troubleshooting
+
+Verify your API key has correct permissions.
 
 Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
 
