@@ -71,16 +71,20 @@ export function generateToolDefinitionMap(
  */
 export function generateListToolsHandler(): string {
   return `
+    function toolPrefix(def: McpToolDefinition): string {
+    for (const bucket of ToolBuckets) {
+      if (def.name.startsWith(bucket)) {
+        return bucket;
+      }
+    }
+    return "other";
+  }
+
   function selectedTool(def: McpToolDefinition): boolean {
     if (SelectedToolSet.size == 0 || SelectedToolSet.has("all")) {
       return true;
     }
-    for (const selectedTool of SelectedToolSet) {
-      if (def.name.startsWith(selectedTool)) {
-        return true;
-      }
-    }
-    return false;
+   return SelectedToolSet.has(toolPrefix(def));
   }
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
