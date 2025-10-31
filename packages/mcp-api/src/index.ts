@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * MCP Server generated from OpenAPI spec for fusionauth-api v1.60.2
- * Generated on: 2025-10-29T19:48:23.481Z
+ * Generated on: 2025-10-31T03:46:09.473Z
  */
 
 // Load environment variables from .env file
@@ -48,7 +48,6 @@ export const SERVER_NAME = "fusionauth-api";
 export const SERVER_VERSION = "1.60.2";
 export const OPENAPI_BASE_URL = "http://localhost:9011";
 export const API_BASE_URL = process.env[`API_BASE_URL`] || OPENAPI_BASE_URL;
-
 export const TOOL_BUCKETS = process.env[`TOOL_BUCKETS`] || "create,delete,patch,update,retrieve,search"; // anything else goes into other
 export const USE_TOOLS = process.env[`USE_TOOLS`] || "retrieve,search"; // Comma-separated list of tool names to enable
 
@@ -3186,6 +3185,7 @@ const securitySchemes =   {
     }
   };
 
+
   function selectedTool(def: McpToolDefinition): boolean {
     if (SelectedToolSet.size == 0 || SelectedToolSet.has("all")) {
       return true;
@@ -3199,9 +3199,9 @@ const securitySchemes =   {
   }
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
-  const toolsForClient: Tool[] = Array.from(toolDefinitionMap.values())
-  .filter(selectedTool)
-  .map(def => ({
+   const toolsForClient: Tool[] = Array.from(toolDefinitionMap.values())
+   .filter(selectedTool)
+   .map(def => ({
     name: def.name,
     description: def.description,
     inputSchema: def.inputSchema
