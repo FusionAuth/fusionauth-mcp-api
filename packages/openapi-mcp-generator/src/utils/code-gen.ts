@@ -71,7 +71,7 @@ export function generateToolDefinitionMap(
  */
 export function generateListToolsHandler(): string {
   return `
-    function toolPrefix(def: McpToolDefinition): string {
+  function toolPrefix(def: McpToolDefinition): string {
     for (const bucket of ToolBuckets) {
       if (def.name.startsWith(bucket)) {
         return bucket;
@@ -84,7 +84,7 @@ export function generateListToolsHandler(): string {
     if (SelectedToolSet.size == 0 || SelectedToolSet.has("all")) {
       return true;
     }
-   return SelectedToolSet.has(toolPrefix(def));
+    return SelectedToolSet.has(toolPrefix(def));
   }
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
