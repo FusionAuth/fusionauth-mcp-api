@@ -132,6 +132,11 @@ export const SERVER_NAME = "${serverName}";
 export const SERVER_VERSION = "${serverVersion}";
 export const OPENAPI_BASE_URL = "${determinedBaseUrl || ''}";
 export const API_BASE_URL = process.env[\`API_BASE_URL\`] || OPENAPI_BASE_URL;
+export const TOOL_BUCKETS = process.env[\`TOOL_BUCKETS\`] || "create,delete,patch,update,retrieve,search"; // anything else goes into other
+export const USE_TOOLS = process.env[\`USE_TOOLS\`] || "retrieve,search"; // Comma-separated list of tool names to enable
+
+const ToolBuckets = TOOL_BUCKETS.split(",").map(bucket => bucket.trim());
+const SelectedToolSet: Set<string> = new Set(USE_TOOLS.split(",").map(tool => tool.trim()));
 
 /**
  * MCP Server instance

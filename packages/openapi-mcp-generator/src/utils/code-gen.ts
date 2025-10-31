@@ -71,8 +71,22 @@ export function generateToolDefinitionMap(
  */
 export function generateListToolsHandler(): string {
   return `
+  function selectedTool(def: McpToolDefinition): boolean {
+    if (SelectedToolSet.size == 0 || SelectedToolSet.has("all")) {
+      return true;
+    }
+    for (const selectedTool of SelectedToolSet) {
+      if (def.name.startsWith(selectedTool)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 server.setRequestHandler(ListToolsRequestSchema, async () => {
-  const toolsForClient: Tool[] = Array.from(toolDefinitionMap.values()).map(def => ({
+   const toolsForClient: Tool[] = Array.from(toolDefinitionMap.values())
+   .filter(selectedTool)
+   .map(def => ({
     name: def.name,
     description: def.description,
     inputSchema: def.inputSchema
