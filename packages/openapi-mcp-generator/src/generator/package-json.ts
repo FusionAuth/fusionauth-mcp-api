@@ -14,10 +14,10 @@ export function generatePackageJson(
   const includeWebDeps = transportType === 'web' || transportType === 'streamable-http';
 
   const packageData: any = {
-    name: serverName,
+    name: "@fusionauth/mcp-api",
     version: serverVersion,
     description: `MCP Server generated from OpenAPI spec for ${serverName}`,
-    private: true,
+    private: false,
     type: 'module',
     main: 'build/index.js',
     files: ['build', 'src'],
@@ -41,6 +41,21 @@ export function generatePackageJson(
       '@types/node': '^22.15.2',
       typescript: '^5.8.3',
     },
+    bugs: {
+      url: "https://github.com/FusionAuth/fusionauth-mcp-api/issues"
+    },
+    homepage: "https://github.com/FusionAuth/fusionauth-mcp-api",
+    repository: {
+    type: "git",
+      url: "git+https://github.com/FusionAuth/fusionauth-mcp-api.git"
+    },
+    keywords: [
+      "fusionauth",
+      "mcp",
+      "api"
+    ],
+    author: "",
+    license: "Apache-2.0",
   };
 
   // Add Hono dependencies for web-based transports

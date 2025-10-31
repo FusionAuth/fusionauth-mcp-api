@@ -1,8 +1,8 @@
 {
-  "name": "fusionauth-api",
-  "version": "1.60.2",
+  "name": "@fusionauth/mcp-api",
+  "version": "0.1.0",
   "description": "MCP Server generated from OpenAPI spec for fusionauth-api",
-  "private": true,
+  "private": false,
   "type": "module",
   "main": "build/index.js",
   "files": [
@@ -28,5 +28,20 @@
   "devDependencies": {
     "@types/node": "^22.15.2",
     "typescript": "^5.8.3"
-  }
+  },
+  "bugs": {
+    "url": "https://github.com/FusionAuth/fusionauth-mcp-api/issues"
+  },
+  "homepage": "https://github.com/FusionAuth/fusionauth-mcp-api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FusionAuth/fusionauth-mcp-api.git"
+  },
+  "keywords": [
+    "fusionauth",
+    "mcp",
+    "api"
+  ],
+  "author": "",
+  "license": "Apache-2.0"
 }

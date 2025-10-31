@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * MCP Server generated from OpenAPI spec for fusionauth-api v1.60.2
- * Generated on: 2025-10-31T04:23:55.004Z
+ * Generated on: 2025-11-01T00:07:22.964Z
  */
 
 // Load environment variables from .env file
@@ -3186,7 +3186,7 @@ const securitySchemes =   {
   };
 
 
-    function toolPrefix(def: McpToolDefinition): string {
+  function toolPrefix(def: McpToolDefinition): string {
     for (const bucket of ToolBuckets) {
       if (def.name.startsWith(bucket)) {
         return bucket;
@@ -3199,7 +3199,7 @@ const securitySchemes =   {
     if (SelectedToolSet.size == 0 || SelectedToolSet.has("all")) {
       return true;
     }
-   return SelectedToolSet.has(toolPrefix(def));
+    return SelectedToolSet.has(toolPrefix(def));
   }
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
