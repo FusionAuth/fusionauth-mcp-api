@@ -63,6 +63,25 @@ You can omit the `env` section above if you have configured an `.env` file.
 * "how many users do I have in my fusionauth instance?"
 * "add a user with an email address of test@example.com and a password of 'password'"
 
+## Restricting Tools
+
+The default MCP Server has a tool for every API endpoint of FusionAuth. All 310 of them!
+The tools, descriptions, requests, and responses combine to nearly 200k tokens, which can exceed 
+the context window of many MCP clients.
+
+You can restrict which tools are available by setting the USE_TOOLS env variable.
+
+For example, if you don't need to use delete and patch, the following setting reduces the tool list to 249 tools:
+
+```
+USE_TOOLS="create,update,retrieve,search,other"
+```
+
+A read only list of 99 tools can be configured with
+```
+USE_TOOLS="retrieve,search"
+```
+
 ## Troubleshooting
 
 Verify your API key has correct permissions.
