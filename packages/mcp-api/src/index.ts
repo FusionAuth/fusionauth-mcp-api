@@ -49,6 +49,12 @@ export const SERVER_VERSION = "1.60.2";
 export const OPENAPI_BASE_URL = "http://localhost:9011";
 export const API_BASE_URL = process.env[`API_BASE_URL`] || OPENAPI_BASE_URL;
 
+export const TOOL_BUCKETS = process.env[`TOOL_BUCKETS`] || "create,delete,patch,update,retrieve,search"; // anything else goes into other
+export const USE_TOOLS = process.env[`USE_TOOLS`] || "retrieve,search"; // Comma-separated list of tool names to enable
+
+const ToolBuckets = TOOL_BUCKETS.split(",").map(bucket => bucket.trim());
+const SelectedToolSet: Set<string> = new Set(USE_TOOLS.split(",").map(tool => tool.trim()));
+
 /**
  * MCP Server instance
  */
@@ -3180,9 +3186,22 @@ const securitySchemes =   {
     }
   };
 
+  function selectedTool(def: McpToolDefinition): boolean {
+    if (SelectedToolSet.size == 0 || SelectedToolSet.has("all")) {
+      return true;
+    }
+    for (const selectedTool of SelectedToolSet) {
+      if (def.name.startsWith(selectedTool)) {
+        return true;
+      }
+    }
+    return false;
+  }
 
 server.setRequestHandler(ListToolsRequestSchema, async () => {
-  const toolsForClient: Tool[] = Array.from(toolDefinitionMap.values()).map(def => ({
+  const toolsForClient: Tool[] = Array.from(toolDefinitionMap.values())
+  .filter(selectedTool)
+  .map(def => ({
     name: def.name,
     description: def.description,
     inputSchema: def.inputSchema
