@@ -47,7 +47,8 @@ For example, to add to Claude Desktop, edit `~/Library/Application Support/Claud
       ],
       "env": {
         "API_KEY_APIKEYAUTH": "<your fusionauth api key>",
-        "API_BASE_URL": "http://localhost:9011"
+        "API_BASE_URL": "http://localhost:9011",
+        "USE_TOOLS": "retrieve,search"
       }
     }
   }
@@ -65,19 +66,31 @@ You can omit the `env` section above if you have configured an `.env` file.
 
 ## Restricting Tools
 
-The default MCP Server has a tool for every API endpoint of FusionAuth. All 310 of them!
-The tools, descriptions, requests, and responses combine to nearly 200k tokens, which can exceed 
-the context window of many MCP clients.
+The default MCP Server has a tool for every API endpoint of FusionAuth. Over 300 of them!
+However, the tools, descriptions, requests, and responses combine to nearly 200k tokens, 
+which can exceed the context window of many MCP clients.
 
-You can restrict which tools are available by setting the USE_TOOLS env variable.
+You can restrict which tools this MCP server makes available by setting the USE_TOOLS env 
+variable as shown above.
 
-For example, if you don't need to use delete and patch, the following setting reduces the tool list to 249 tools:
+Each tool is defined by its prefix. The default prefixes are:
+
+* `create`
+* `delete`
+* `patch`
+* `update`
+* `retrieve`
+* `search`
+
+There is also an `other` tool bucket that contains every tool with another prefix.
+
+For example, if you don't need to use any `delete` and `patch` methods, the following setting reduces the tool list by 20%.
 
 ```
 USE_TOOLS="create,update,retrieve,search,other"
 ```
 
-A read only list of 99 tools can be configured with
+If you only want to use read operations, you can reduce the tool list by 66% by using the following configuration.
 ```
 USE_TOOLS="retrieve,search"
 ```
@@ -88,4 +101,4 @@ Verify your API key has correct permissions.
 
 Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
 
-Try the modelcontextprotocol inspector `npx @modelcontextprotocol/inspector`
+Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`
