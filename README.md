@@ -102,3 +102,9 @@ Verify your API key has correct permissions.
 Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
 
 Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`
+
+## Feedback
+
+Please share feature requests and bugs in this repo.
+
+If you want to share interesting use cases or ask how to use functionality, please post in [the FusionAuth forum](https://fusionauth.io/community/forum/).
