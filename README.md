@@ -95,6 +95,14 @@ If you only want to use read operations, you can reduce the tool list by 66% by 
 USE_TOOLS="retrieve,search"
 ```
 
+## Securing Your MCP Server
+
+There are three different approaches to secure your MCP server and you should combine them to enable secure access to your FusionAuth instance while still meeting your functionality needs. In order of granularity (from low to high):
+
+* Point to the correct instance. This tool is preview and we suggest you only point it at a local, dev instance.
+* Enable the correct type of tools. In addition to reducing context window usage, limiting the type of requests your LLM can make can increase security. For instance, if you don't enable the `delete` set of tools, you don't have to worry about the LLM "helping" you by deleting FusionAuth configuration.
+* Lock down your API key. This allows fine grained control beyond the tool choice. The MCP server communicates to FusionAuth using an API key. You can limit that API key to only allow it to act on tenants, applications and users by choosing the [appropriate set of permissions](https://fusionauth.io/docs/apis/authentication#api-key-permissions). 
+
 ## Troubleshooting
 
 Verify your API key has correct permissions.
