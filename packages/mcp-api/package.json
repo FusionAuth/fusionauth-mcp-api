@@ -4,9 +4,13 @@
   "description": "MCP Server generated from OpenAPI spec for fusionauth-api",
   "private": false,
   "type": "module",
+  "bin": {
+    "fusionauth-mcp-api": "./build/index.js"
+  },
   "main": "build/index.js",
   "files": [
     "build",
+    "README.md",
     "src"
   ],
   "scripts": {
