@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * MCP Server generated from OpenAPI spec for fusionauth-api v1.60.2
- * Generated on: 2025-11-03T21:06:28.580Z
+ * Generated on: 2025-11-03T21:48:42.454Z
  */
 
 // Load environment variables from .env file
