@@ -19,8 +19,9 @@ export function generatePackageJson(
     description: `MCP Server generated from OpenAPI spec for ${serverName}`,
     private: false,
     type: 'module',
+    bin: { 'fusionauth-mcp-api': './build/index.js' },
     main: 'build/index.js',
-    files: ['build', 'src'],
+    files: ['build', 'README.md', 'src'],
     scripts: {
       start: 'node build/index.js',
       build: 'tsc && chmod 755 build/index.js',
