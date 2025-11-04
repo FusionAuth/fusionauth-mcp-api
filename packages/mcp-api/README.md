@@ -1,6 +1,6 @@
 # Preview FusionAuth API MCP Server (fusionauth-mcp-api)
 
-[![npm version](https://img.shields.io/npm/v/fusionauth-mcp-api.svg)](https://www.npmjs.com/package/@fusionauth/mcp-api)
+[![npm version](https://img.shields.io/npm/v/@fusionauth/mcp-api.svg)](https://www.npmjs.com/package/@fusionauth/mcp-api)
 [![License: Apache](https://img.shields.io/badge/License-Apache-yellow.svg)](https://opensource.org/license/apache-2-0)
 [![GitHub repository](https://img.shields.io/badge/GitHub-FusionAuth/fusionauth--mcp--api-blue.svg)](https://github.com/FusionAuth/fusionauth-mcp-api)
 
