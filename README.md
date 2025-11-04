@@ -41,6 +41,8 @@ For example, to add to Claude Desktop, edit `~/Library/Application Support/Claud
 
 The `USE_TOOLS` env variable above essentially restricts the available tools to read only operations. You can omit this value to provide full read write access, but you will need a model that can handle about 200k tokens.
 
+Consult your MCP client documentation to determine how to add an MCP server to your client.
+
 ## Example Prompts
 
 * "which tools do you have access to?" should show you all the FusionAuth API tools
