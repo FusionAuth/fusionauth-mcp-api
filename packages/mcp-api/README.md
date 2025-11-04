@@ -11,9 +11,20 @@ Built with the excellent [github.com/harsha-iiiv/openapi-mcp-generator](https://
 
 Using this MCP server requires providing the MCP client with a FusionAuth API key. Only use this for dev and test instances. FusionAuth is not responsible for potentially leaking sensitive information.
 
-## Simple configuration
+<!--
+tag::forDocSite[]
+-->
 
-Configure your MCP client to use the FusionAuth API MCP server.
+## Prerequisites
+
+* A running FusionAuth instance
+* Node.js
+
+## Configuration
+
+First, set up a limited API key in the FusionAuth instance. Here's documentation on [creating an API key](https://fusionauth.io/docs/apis/authentication#create-an-api-key) and [configuring the correct permissions for an API key](https://fusionauth.io/docs/apis/authentication#api-key-permissions).
+
+Next, configure your MCP client to use the FusionAuth API MCP server.
 
 For example, to add to Claude Desktop, edit `~/Library/Application Support/Claude/claude_desktop_config.json` to include the `fusionauth-mcp-api` below. If you don't have any previous MCP servers installed, it would look like this:
 
@@ -36,6 +47,8 @@ For example, to add to Claude Desktop, edit `~/Library/Application Support/Claud
 ```
 
 The `USE_TOOLS` env variable above essentially restricts the available tools to read only operations. You can omit this value to provide full read write access, but you will need a model that can handle about 200k tokens.
+
+Consult your MCP client documentation to determine how to add an MCP server to your client.
 
 ## Example Prompts
 
@@ -83,6 +96,18 @@ There are three different approaches to secure your MCP server and you should co
 * Enable the correct type of tools. In addition to reducing context window usage, limiting the type of requests your LLM can make can increase security. For instance, if you don't enable the `delete` set of tools, you don't have to worry about the LLM "helping" you by deleting FusionAuth configuration.
 * Lock down your API key. This allows fine grained control beyond the tool choice. The MCP server communicates to FusionAuth using an API key. You can limit that API key to only allow it to act on tenants, applications and users by choosing the [appropriate set of permissions](https://fusionauth.io/docs/apis/authentication#api-key-permissions). 
 
+## Troubleshooting
+
+Verify your API key has correct permissions.
+
+Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
+
+Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`. If you want to change the `USE_TOOLS` variable, you cannot dynamically change it and must pass it on the command line. `npx @modelcontextprotocol/inspector npx @fusionauth/mcp-api -e API_KEY_APIKEYAUTH=... -e USE_TOOLS=create`
+
+<!--
+end::forDocSite[]
+-->
+
 ## Building locally
 
 ```bash
@@ -124,14 +149,6 @@ For example, to add to Claude Desktop, edit `~/Library/Application Support/Claud
 ```
 
 You can omit the `env` section above if you have configured an `.env` file.
-
-## Troubleshooting
-
-Verify your API key has correct permissions.
-
-Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
-
-Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`
 
 ## Feedback
 
