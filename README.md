@@ -15,9 +15,16 @@ Using this MCP server requires providing the MCP client with a FusionAuth API ke
 tag::forDocSite[]
 -->
 
+## Prerequisites
+
+* A running FusionAuth instance
+* Node.js
+
 ## Configuration
 
-Configure your MCP client to use the FusionAuth API MCP server.
+First, set up a limited API key in the FusionAuth instance. Here's documentation on [creating an API key](https://fusionauth.io/docs/apis/authentication#create-an-api-key) and [configuring the correct permissions for an API key](https://fusionauth.io/docs/apis/authentication#api-key-permissions).
+
+Next, configure your MCP client to use the FusionAuth API MCP server.
 
 For example, to add to Claude Desktop, edit `~/Library/Application Support/Claude/claude_desktop_config.json` to include the `fusionauth-mcp-api` below. If you don't have any previous MCP servers installed, it would look like this:
 
