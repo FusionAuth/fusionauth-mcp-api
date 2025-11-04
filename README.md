@@ -15,9 +15,16 @@ Using this MCP server requires providing the MCP client with a FusionAuth API ke
 tag::forDocSite[]
 -->
 
+## Prerequisites
+
+* A running FusionAuth instance
+* Node.js
+
 ## Configuration
 
-Configure your MCP client to use the FusionAuth API MCP server.
+First, set up a limited API key in the FusionAuth instance. Here's documentation on [creating an API key](https://fusionauth.io/docs/apis/authentication#create-an-api-key) and [configuring the correct permissions for an API key](https://fusionauth.io/docs/apis/authentication#api-key-permissions).
+
+Next, configure your MCP client to use the FusionAuth API MCP server.
 
 For example, to add to Claude Desktop, edit `~/Library/Application Support/Claude/claude_desktop_config.json` to include the `fusionauth-mcp-api` below. If you don't have any previous MCP servers installed, it would look like this:
 
@@ -95,7 +102,7 @@ Verify your API key has correct permissions.
 
 Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
 
-Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`
+Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`. If you want to change the `USE_TOOLS` variable, you cannot dynamically change it and must pass it on the command line. `npx @modelcontextprotocol/inspector npx @fusionauth/mcp-api -e API_KEY_APIKEYAUTH=... -e USE_TOOLS=create`
 
 <!--
 end::forDocSite[]
