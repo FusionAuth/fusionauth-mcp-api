@@ -95,7 +95,7 @@ Verify your API key has correct permissions.
 
 Check your MCP client logs. For example, `$HOME/Library/Logs/Claude/mcp-server-fusionauth-api-server.log`
 
-Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`
+Use the modelcontextprotocol inspector to help determine if the issue is the MCP server or your MCP client: `npx @modelcontextprotocol/inspector`. If you want to change the `USE_TOOLS` variable, you cannot dynamically change it and must pass it on the command line. `npx @modelcontextprotocol/inspector npx @fusionauth/mcp-api -e API_KEY_APIKEYAUTH=... -e USE_TOOLS=create`
 
 <!--
 end::forDocSite[]
