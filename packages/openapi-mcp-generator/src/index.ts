@@ -58,7 +58,7 @@ program
   )
   .option(
     '-v, --server-version <version>',
-    'Version for the generated MCP server (default: derived from OpenAPI info version or 0.1.0)'
+    'Version for the generated MCP server (default: 0.1.0. Not derived from OpenAPI info version during development.)'
   )
   .option(
     '-b, --base-url <url>',
@@ -152,7 +152,9 @@ async function runGenerator(options: CliOptions & { force?: boolean }) {
     // Determine server name and version
     const serverNameRaw = options.serverName || api.info?.title || 'my-mcp-server';
     const serverName = serverNameRaw.toLowerCase().replace(/[^a-z0-9_-]/g, '-');
-    const serverVersion = options.serverVersion || api.info?.version || '0.1.0';
+    // Note: not using version from OpenAPI while in development
+    // const serverVersion = options.serverVersion || api.info?.version || '0.1.0';
+    const serverVersion = options.serverVersion || '0.1.0';
 
     console.error('Generating server code...');
     const serverTsContent = generateMcpServerCode(api, options, serverName, serverVersion);
