@@ -29,7 +29,6 @@ jobs:
     steps:
       - uses: liskin/gh-workflow-keepalive@v1.2.1
 
-
   check_openapi_changes:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
@@ -37,7 +36,6 @@ jobs:
       keepgoing: ${{ steps.checkopenapispec.outputs.keepgoing }}
       latestreleasedversion: ${{ steps.checkopenapispec.outputs.latestreleasedversion }}
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
@@ -60,7 +58,14 @@ jobs:
           bin/updatemcp.sh 
         shell: bash
 
-      #- name: Download then upload theme
+      - name: Commit the changes and push
+        env:
+          GH_TOKEN: ${{ github.token }}
+      - uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
+        with:
+          commit_message: Update MCP server
+
+      #- name: Publish TODO
         #run: |
           #bin/pulltheme.sh
           #bin/pushtheme.sh $LATEST_RELEASED_VERSION
