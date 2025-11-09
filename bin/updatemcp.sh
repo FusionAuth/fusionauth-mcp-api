@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # bumps version in the package.json
-npm version patch
+npm version patch --no-git-tag-version
 
 npm run build:openapi-mcp-generator
 npm run build:mcp-api
