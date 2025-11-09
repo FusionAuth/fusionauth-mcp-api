@@ -1,4 +1,4 @@
-name: update_theme_history
+name: update_mcp_server
 
 # Controls when the action will run. 
 on:
@@ -39,7 +39,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v4
-      - name: Check if theme is up to date
+      - name: Check if spec is up to date
         id: checkopenapispec
         run: |
           bin/checkopenapi.sh 
@@ -66,10 +66,4 @@ jobs:
           commit_message: Update MCP server
 
       #- name: Publish TODO
-        #run: |
-          #bin/pulltheme.sh
-          #bin/pushtheme.sh $LATEST_RELEASED_VERSION
-          #cd fusionauth-theme-history
-          #git push --tags https://${{ secrets.PAT_USER }}:${{ secrets.PAT_FOR_COMMITS }}@github.com/FusionAuth/fusionauth-theme-history main 
-        #shell: bash
 
