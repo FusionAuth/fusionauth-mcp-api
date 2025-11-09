@@ -2,6 +2,10 @@
 
 # we just try to generate the new version. if there are any changes other than the 'generated on' message, we have a new openapi file and need to bump the version and then check it in
 
+npm install
+
+npm run build:openapi-mcp-generator
+npm run build:mcp-api
 npm run generate
 
 GENERATED_FILE=packages/mcp-api/src/index.ts

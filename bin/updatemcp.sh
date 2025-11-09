@@ -1,5 +1,7 @@
 #!/bin/bash
 
+npm install
+
 # bumps version in the package.json
 npm version patch --no-git-tag-version
 
