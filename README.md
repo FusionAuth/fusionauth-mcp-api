@@ -157,6 +157,10 @@ For example, to add to Claude Desktop, edit `~/Library/Application Support/Claud
 
 You can omit the `env` section above if you have configured an `.env` file.
 
+## Publishing
+
+use npm publish
+
 ## Feedback
 
 Please share feature requests and bugs in this repo.
