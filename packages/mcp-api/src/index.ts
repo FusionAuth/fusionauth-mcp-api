@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * MCP Server generated from OpenAPI spec for fusionauth-api v0.1.8
- * Generated on: 2025-11-10T23:52:22.332Z
+ * MCP Server generated from OpenAPI spec for fusionauth-api v0.1.9
+ * Generated on: 2025-11-10T23:54:23.145Z
  */
 
 // Load environment variables from .env file
@@ -45,7 +45,7 @@ interface McpToolDefinition {
  * Server configuration
  */
 export const SERVER_NAME = "fusionauth-api";
-export const SERVER_VERSION = "0.1.8";
+export const SERVER_VERSION = "0.1.9";
 export const OPENAPI_BASE_URL = "http://localhost:9011";
 export const API_BASE_URL = process.env[`API_BASE_URL`] || OPENAPI_BASE_URL;
 export const TOOL_BUCKETS = process.env[`TOOL_BUCKETS`] || "create,delete,patch,update,retrieve,search"; // anything else goes into other
