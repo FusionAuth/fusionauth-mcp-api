@@ -1,6 +1,6 @@
 {
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-10-17/server.schema.json",
-  "name": "io.fusionauth/fusionauth-mcp-api",
+  "name": "io.fusionauth/mcp-api",
   "description": "Preview release of FusionAuth API MCP server",
   "repository": {
     "url": "https://github.com/FusionAuth/fusionauth-mcp-api",

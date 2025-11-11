@@ -59,7 +59,7 @@ export function generatePackageJson(
     license: "Apache-2.0",
   };
 
-  packageData.mcpName = packageData.name;
+  packageData.mcpName = 'io.fusionauth/mcp-api'; // set in server.json, for mcp registry
 
   // Add Hono dependencies for web-based transports
   if (includeWebDeps) {
