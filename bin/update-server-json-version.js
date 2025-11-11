@@ -10,6 +10,7 @@ const packageJson = JSON.parse(fs.readFileSync(path.join(__dirname, '../package.
 
 // Update the version in your file
 data.version = packageJson.version;
+data.packages[0].version = packageJson.version;
 
 // Write it back
 fs.writeFileSync(filePath, JSON.stringify(data, null, 2) + '\n');

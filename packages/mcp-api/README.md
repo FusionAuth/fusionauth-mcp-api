@@ -159,7 +159,7 @@ You can omit the `env` section above if you have configured an `.env` file.
 
 ## Publishing
 
-use npm publish
+npm publish --access public --workspace=packages/mcp-api
 
 ## Feedback
 
