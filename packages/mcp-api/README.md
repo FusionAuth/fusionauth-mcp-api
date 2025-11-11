@@ -159,6 +159,10 @@ You can omit the `env` section above if you have configured an `.env` file.
 
 ## Publishing
 
+bin/updatemcp.sh
+git commit <changed files>
+git tag <tag>
+git push origin main --tags
 npm publish --access public --workspace=packages/mcp-api
 
 ## Feedback
