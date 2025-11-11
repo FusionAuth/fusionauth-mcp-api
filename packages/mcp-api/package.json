@@ -1,6 +1,6 @@
 {
   "name": "@fusionauth/mcp-api",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "description": "MCP Server generated from OpenAPI spec for fusionauth-api",
   "private": false,
   "type": "module",
@@ -48,5 +48,5 @@
   ],
   "author": "",
   "license": "Apache-2.0",
-  "mcpName": "@fusionauth/mcp-api"
+  "mcpName": "io.fusionauth/mcp-api"
 }
