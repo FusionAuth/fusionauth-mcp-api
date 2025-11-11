@@ -59,6 +59,8 @@ export function generatePackageJson(
     license: "Apache-2.0",
   };
 
+  packageData.mcpName = packageData.name;
+
   // Add Hono dependencies for web-based transports
   if (includeWebDeps) {
     packageData.dependencies = {
