@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
- * MCP Server generated from OpenAPI spec for fusionauth-api v0.1.14
- * Generated on: 2025-11-11T20:23:02.198Z
+ * MCP Server generated from OpenAPI spec for fusionauth-api v0.1.15
+ * Generated on: 2025-11-14T18:48:15.944Z
  */
 
 // Load environment variables from .env file
@@ -45,7 +45,7 @@ interface McpToolDefinition {
  * Server configuration
  */
 export const SERVER_NAME = "fusionauth-api";
-export const SERVER_VERSION = "0.1.14";
+export const SERVER_VERSION = "0.1.15";
 export const OPENAPI_BASE_URL = "http://localhost:9011";
 export const API_BASE_URL = process.env[`API_BASE_URL`] || OPENAPI_BASE_URL;
 export const TOOL_BUCKETS = process.env[`TOOL_BUCKETS`] || "create,delete,patch,update,retrieve,search"; // anything else goes into other
@@ -1850,7 +1850,7 @@ const toolDefinitionMap: Map<string, McpToolDefinition> = new Map([
   ["retrieveReportLogin", {
     name: "retrieveReportLogin",
     description: `Retrieves the login report between the two instants for a particular user by login Id, using specific loginIdTypes. If you specify an application id, it will only return the login counts for that application. OR Retrieves the login report between the two instants for a particular user by login Id. If you specify an application Id, it will only return the login counts for that application. OR Retrieves the login report between the two instants for a particular user by Id. If you specify an application Id, it will only return the login counts for that application. OR Retrieves the login report between the two instants. If you specify an application Id, it will only return the login counts for that application.`,
-    inputSchema: {"type":"object","properties":{"applicationId":{"type":"string","description":"The application id."},"loginId":{"type":"string","description":"The userId id."},"start":{"type":"string","description":"The start instant as UTC milliseconds since Epoch."},"end":{"type":"string","description":"The end instant as UTC milliseconds since Epoch."},"loginIdTypes":{"type":"array","items":{"type":"string"},"description":"the identity types that FusionAuth will compare the loginId to."},"userId":{"type":"string","description":"The userId Id."}}},
+    inputSchema: {"type":"object","properties":{"applicationId":{"type":"string","description":"The application id."},"loginId":{"type":"string","description":"The userId id."},"start":{"type":"string","description":"The start instant as UTC milliseconds since Epoch."},"end":{"type":"string","description":"The end instant as UTC milliseconds since Epoch."},"loginIdTypes":{"type":"array","items":{"type":"string"},"description":"The identity types that FusionAuth will compare the loginId to."},"userId":{"type":"string","description":"The userId Id."}}},
     method: "get",
     pathTemplate: "/api/report/login",
     executionParameters: [{"name":"applicationId","in":"query"},{"name":"loginId","in":"query"},{"name":"start","in":"query"},{"name":"end","in":"query"},{"name":"loginIdTypes","in":"query"},{"name":"userId","in":"query"}],
@@ -2250,7 +2250,7 @@ const toolDefinitionMap: Map<string, McpToolDefinition> = new Map([
   ["retrieveUser", {
     name: "retrieveUser",
     description: `Retrieves the user for the given Id. This method does not use an API key, instead it uses a JSON Web Token (JWT) for authentication. OR Retrieves the user by a verificationId. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username. OR Retrieves the user for the given username. OR Retrieves the user for the loginId, using specific loginIdTypes. OR Retrieves the user for the loginId. The loginId can be either the username or the email. OR Retrieves the user for the given email. OR Retrieves the user by a change password Id. The intended use of this API is to retrieve a user after the forgot password workflow has been initiated and you may not know the user's email or username.`,
-    inputSchema: {"type":"object","properties":{"X-FusionAuth-TenantId":{"type":"string","format":"UUID","description":"The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped."},"verificationId":{"type":"string","description":"The unique verification Id that has been set on the user object."},"username":{"type":"string","description":"The username of the user."},"loginId":{"type":"string","description":"The email or username of the user."},"loginIdTypes":{"type":"array","items":{"type":"string"},"description":"the identity types that FusionAuth will compare the loginId to."},"email":{"type":"string","description":"The email of the user."},"changePasswordId":{"type":"string","description":"The unique change password Id that was sent via email or returned by the Forgot Password API."}}},
+    inputSchema: {"type":"object","properties":{"X-FusionAuth-TenantId":{"type":"string","format":"UUID","description":"The unique Id of the tenant used to scope this API request. Only required when there is more than one tenant and the API key is not tenant-scoped."},"verificationId":{"type":"string","description":"The unique verification Id that has been set on the user object."},"username":{"type":"string","description":"The username of the user."},"loginId":{"type":"string","description":"The email or username of the user."},"loginIdTypes":{"type":"array","items":{"type":"string"},"description":"The identity types that FusionAuth will compare the loginId to."},"email":{"type":"string","description":"The email of the user."},"changePasswordId":{"type":"string","description":"The unique change password Id that was sent via email or returned by the Forgot Password API."}}},
     method: "get",
     pathTemplate: "/api/user",
     executionParameters: [{"name":"X-FusionAuth-TenantId","in":"header"},{"name":"verificationId","in":"query"},{"name":"username","in":"query"},{"name":"loginId","in":"query"},{"name":"loginIdTypes","in":"query"},{"name":"email","in":"query"},{"name":"changePasswordId","in":"query"}],
@@ -2469,11 +2469,11 @@ const toolDefinitionMap: Map<string, McpToolDefinition> = new Map([
   }],
   ["retrieveUserChangePassword", {
     name: "retrieveUserChangePassword",
-    description: `Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.`,
-    inputSchema: {"type":"object","properties":{"loginId":{"type":"string","description":"The loginId of the User that you intend to change the password for."}}},
+    description: `Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Request Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Request Id by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API. OR Check to see if the user must obtain a Trust Token Id in order to complete a change password request. When a user has enabled Two-Factor authentication, before you are allowed to use the Change Password API to change your password, you must obtain a Trust Token by completing a Two-Factor Step-Up authentication.  An HTTP status code of 400 with a general error code of [TrustTokenRequired] indicates that a Trust Token is required to make a POST request to this API.`,
+    inputSchema: {"type":"object","properties":{"loginId":{"type":"string","description":"The loginId of the User that you intend to change the password for."},"loginIdTypes":{"type":"array","items":{"type":"string"},"description":"The identity types that FusionAuth will compare the loginId to."}}},
     method: "get",
     pathTemplate: "/api/user/change-password",
-    executionParameters: [{"name":"loginId","in":"query"}],
+    executionParameters: [{"name":"loginId","in":"query"},{"name":"loginIdTypes","in":"query"}],
     requestBodyContentType: undefined,
     securityRequirements: [{"ApiKeyAuth":[]}]
   }],
