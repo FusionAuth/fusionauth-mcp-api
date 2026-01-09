@@ -1,0 +1,42 @@
+---
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      command:
+        type: choice
+        options:
+          - build    # build only
+          - publish  # build & publish to npmjs
+        default: build
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        if: inputs.command == 'publish'
+        uses: actions/checkout@v4
+      
+      - name: setup node for publishing
+        if: inputs.command == 'publish'
+        uses: actions/setup-node@v4
+        with:
+          node-version: '25'
+          registry-url: 'https://registry.npmjs.org' # This generates the necessary .npmrc
+
+      # Requires NODE_AUTH_TOKEN set in GitHub
+      - name: publish to npmjs
+        if: inputs.command == 'publish'
+        run: |
+          npm install -g npm@latest
+          npm run build:mcp-api
+          cd packages/mcp-api
+          npm publish
