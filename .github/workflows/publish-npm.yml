@@ -1,42 +1,44 @@
 ---
-name: Deploy
+name: Publish to NPM
 
 on:
   push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
-  workflow_dispatch:
-    inputs:
-      command:
-        type: choice
-        options:
-          - build    # build only
-          - publish  # build & publish to npmjs
-        default: build
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+
+permissions:
+  contents: read
+  id-token: write
 
 jobs:
-  deploy:
+  publish:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: /usr/bin/bash -l -e -o pipefail {0}
     steps:
       - name: checkout
-        if: inputs.command == 'publish'
-        uses: actions/checkout@v4
-      
-      - name: setup node for publishing
-        if: inputs.command == 'publish'
-        uses: actions/setup-node@v4
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0  # Fetch full history for branch verification
+
+      - name: verify tag is on main branch
+        run: |
+          git fetch origin main
+          if ! git merge-base --is-ancestor ${{ github.sha }} origin/main; then
+            echo "Error: Tag must be on the main branch"
+            exit 1
+          fi
+
+      - name: setup node
+        uses: actions/setup-node@v6
         with:
           node-version: '25'
-          registry-url: 'https://registry.npmjs.org' # This generates the necessary .npmrc
+          registry-url: 'https://registry.npmjs.org'
 
-      # Requires NODE_AUTH_TOKEN set in GitHub
-      - name: publish to npmjs
-        if: inputs.command == 'publish'
+      - name: build and publish
         run: |
           npm install -g npm@latest
           npm run build:mcp-api
           cd packages/mcp-api
-          npm publish
+          npm publish --provenance --access public
