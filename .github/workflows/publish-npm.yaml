@@ -2,6 +2,9 @@
 name: Publish to NPM
 
 on:
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
   push:
     tags:
       - 'v[0-9]+.[0-9]+.[0-9]+'
@@ -39,6 +42,7 @@ jobs:
       - name: build and publish
         run: |
           npm install -g npm@latest
+          npm install
           npm run build:mcp-api
           cd packages/mcp-api
           npm publish --provenance --access public
