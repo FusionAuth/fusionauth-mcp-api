@@ -39,26 +39,6 @@ jobs:
           node-version: '25'
           registry-url: 'https://registry.npmjs.org'
 
-      - name: set aws credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::752443094709:role/gha-fusionauth-typescript-client
-          role-session-name: aws-auth-action
-          aws-region: us-west-2
-
-      - name: get secret
-        run: |
-          while IFS=$'\t' read -r key value; do
-            echo "::add-mask::${value}"
-            echo "${key}=${value}" >> $GITHUB_ENV
-          done < <(aws secretsmanager get-secret-value \
-            --region us-west-2 \
-            --secret-id platform/npmjs \
-            --query SecretString \
-            --output text | \
-            jq -r 'to_entries[] | [.key, .value] | @tsv')
-
-
       - name: build and publish
         run: |
           npm install -g npm@latest
