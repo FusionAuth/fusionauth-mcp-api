@@ -1,6 +1,6 @@
 {
   "name": "@fusionauth/mcp-api",
-  "version": "0.1.18",
+  "version": "0.1.19",
   "description": "MCP Server generated from OpenAPI spec for fusionauth-api",
   "private": false,
   "type": "module",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.10.0",
-    "axios": "1.14.0",
+    "axios": "^1.9.0",
     "dotenv": "^16.4.5",
     "zod": "^3.24.3",
     "json-schema-to-zod": "^2.6.1"
