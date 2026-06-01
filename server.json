@@ -6,12 +6,12 @@
     "url": "https://github.com/FusionAuth/fusionauth-mcp-api",
     "source": "github"
   },
-  "version": "0.1.19",
+  "version": "0.1.20",
   "packages": [
     {
       "registryType": "npm",
       "identifier": "@fusionauth/mcp-api",
-      "version": "0.1.19",
+      "version": "0.1.20",
       "transport": {
         "type": "stdio"
       },
