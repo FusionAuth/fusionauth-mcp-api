@@ -1,6 +1,6 @@
 {
   "name": "fusionauth-mcp-api",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "mcpName": "com.fusionAuth/fusionauth-mcp-api",
   "description": "FusionAuth API MCP server",
   "main": "index.js",
