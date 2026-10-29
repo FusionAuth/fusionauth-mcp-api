@@ -36,12 +36,11 @@ jobs:
       - name: setup node
         uses: actions/setup-node@v6
         with:
-          node-version: '25'
+          node-version: '26'
           registry-url: 'https://registry.npmjs.org'
 
       - name: build and publish
         run: |
-          npm install -g npm@latest
           npm install
           npm run build:mcp-api
           cd packages/mcp-api
