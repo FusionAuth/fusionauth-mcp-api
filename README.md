@@ -1,15 +1,12 @@
-# Preview FusionAuth API MCP Server (fusionauth-mcp-api)
+# FusionAuth API MCP Server (fusionauth-mcp-api)
 
 [![npm version](https://img.shields.io/npm/v/@fusionauth/mcp-api.svg)](https://www.npmjs.com/package/@fusionauth/mcp-api)
 [![License: Apache](https://img.shields.io/badge/License-Apache-yellow.svg)](https://opensource.org/license/apache-2-0)
 [![GitHub repository](https://img.shields.io/badge/GitHub-FusionAuth/fusionauth--mcp--api-blue.svg)](https://github.com/FusionAuth/fusionauth-mcp-api)
 
-A preview release of an MCP server for the FusionAuth API.
-Built with the excellent [github.com/harsha-iiiv/openapi-mcp-generator](https://github.com/harsha-iiiv/openapi-mcp-generator)
+Using this MCP server requires a FusionAuth API key which is stored in the MCP client configuration. Scope the API key appropriately.
 
-## ⚠️  Not for Production Use!
-
-Using this MCP server requires providing the MCP client with a FusionAuth API key. Only use this for dev and test instances. FusionAuth is not responsible for potentially leaking sensitive information.
+FusionAuth is not responsible for potentially leaking sensitive information.
 
 <!--
 tag::forDocSite[]
@@ -97,7 +94,7 @@ This also reduces the tool list size by 66%.
 
 There are three different approaches to secure your MCP server and you should combine them to enable secure access to your FusionAuth instance while still meeting your functionality needs. In order of granularity (from coarse to fine-grained):
 
-* Point to the correct instance. This tool is in preview and we suggest you only point it at a local, dev instance.
+* Point to the correct instance.
 * Enable the correct type of tools. In addition to reducing context window usage, limiting the type of requests your LLM can make can increase security. For instance, if you don't enable the `delete` set of tools, you don't have to worry about the LLM "helping" you by deleting FusionAuth configuration.
 * Lock down your API key. This allows fine-grained control beyond the tool choice. The MCP server communicates to FusionAuth using an API key. You can limit that API key to only allow it to act on tenants, applications and users by choosing the [appropriate set of permissions](https://fusionauth.io/docs/apis/authentication#api-key-permissions). 
 
